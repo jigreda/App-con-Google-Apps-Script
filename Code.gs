@@ -9,5 +9,8 @@ function generarCodigo(){
   codigoActual=Math.floor(Math.random()*(455-255+1)+255);
   horaGeneracion=new Date();
   PropertiesService.getScriptProperties().setProperties({
+  codigo:codigoActual.toString(),
+  marca:horaGeneracion.toISOString()
   });
+  return codigoActual;
 }
