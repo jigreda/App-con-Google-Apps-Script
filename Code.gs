@@ -14,3 +14,8 @@ function generarCodigo(){
   });
   return codigoActual;
 }
+
+function verificarAsistencia(nombre, codigoIngresado){
+  let props=PropertiesService.getScriptProperties().getProperties();
+  let codigoValido = props.codigo;
+}
