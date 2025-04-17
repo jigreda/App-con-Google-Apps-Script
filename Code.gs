@@ -22,5 +22,9 @@ function verificarAsistencia(nombre, codigoIngresado){
   let ahora=new Date();
   let diferenciaMinutos=(ahora-tiempo)/(1000*60);
   if(codigoIngresado===codigoValido && diferenciaMinutos <=60){
+    MailApp.senemail("ingresaruncorreo", "Asistencia registrada", "Asistió: " + nombre);
+    return "Codigo valido, asistencia registrada exitosamente";
+  }else{
+    return "Codigo invalido o vencido";
   }
 }
