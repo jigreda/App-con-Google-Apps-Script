@@ -2,34 +2,43 @@
 <html>
   <head>
     <base target="_top">
-    <title>Registro de Asistencia</title>
-    <style>
-      <?!= include("style.css"); ?>
-    </style>
+  <title>Registro de Asistencia</title>
+  <link rel="stylesheet" href="style.css">
   </head>
   <body>
     <h2>Registro de Asistencia</h2>
-    <div>
-      <input type="text" id="nombre" placeholder="Ingresa tu nombre">
-      <br>
-      <input type="text" id="codigo" placeholder="Ingresa el código">
-      <br>
-      <button onclick="verificar()">Registrar Asistencia</button>
-      <p id="mensaje"></p>
-    </div>
+
+    <button onclick="generar()"> Generar código</button>
+    <p id="codigoGenerado"></p>
+
+    <label>Nombre completo:</label>
+    <input type="text" id="nombre">
+
+    <label>Código de asistencia:</label>
+    <input type="text" id="codigo">
+
+    <button onclick="enviar()">Registrar asistencia</button>
+
+    <p id="mensaje"></p>
 
     <script>
-      function verificar() {
-        const nombre = document.getElementById("nombre").value.trim();
-        const codigo = document.getElementById("codigo").value.trim();
+      function generar() {
+        google.script.run.withSuccessHandler(function(codigo) {
+          document.getElementById("codigoGenerado").innerText = " Código generado: " + codigo;
+        }).generarCodigo();
+      }
+
+      function enviar() {
+        let nombre = document.getElementById("nombre").value.trim();
+        let codigo = document.getElementById("codigo").value.trim();
 
         if (!nombre || !codigo) {
-          document.getElementById("mensaje").textContent = "Por favor, completa todos los campos.";
+          document.getElementById("mensaje").innerText = "Completa todos los campos.";
           return;
         }
 
         google.script.run.withSuccessHandler(function(respuesta) {
-          document.getElementById("mensaje").textContent = respuesta;
+          document.getElementById("mensaje").innerText = respuesta;
         }).verificarAsistencia(nombre, codigo);
       }
     </script>
