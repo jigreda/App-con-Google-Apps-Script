@@ -1,29 +1,35 @@
 body {
     font-family: Arial, sans-serif;
+    padding: 20px;
     text-align: center;
-    margin-top: 100px;
-    background-color: #f7f7f7;
+    background-color: #3c9b57;
   }
   
-  input, button {
-    padding: 10px;
-    margin: 10px;
-    font-size: 16px;
-    border-radius: 5px;
-    border: 1px solid #ccc;
+  label {
+    display: block;
+    margin-top: 10px;
+  }
+  
+  input {
+    padding: 5px;
+    margin-bottom: 10px;
   }
   
   button {
-    background-color: #4CAF50;
-    color: white;
+    padding: 8px 16px;
+    margin-top: 10px;
     cursor: pointer;
+    background-color: #2196F3;
+    color: white;
+    border: none;
+    border-radius: 5px;
   }
   
   button:hover {
-    background-color: #45a049;
+    background-color: #0b7dda;
   }
   
   #mensaje {
+    margin-top: 15px;
     font-weight: bold;
-    margin-top: 20px;
   }
