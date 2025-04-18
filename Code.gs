@@ -9,8 +9,8 @@ function generarCodigo(){
   codigoActual=Math.floor(Math.random()*(455-255+1)+255);
   horaGeneracion=new Date();
   PropertiesService.getScriptProperties().setProperties({
-  codigo:codigoActual.toString(),
-  marca:horaGeneracion.toISOString()
+    codigo:codigoActual.toString(),
+    marca:horaGeneracion.toISOString()
   });
   return codigoActual;
 }
@@ -22,7 +22,7 @@ function verificarAsistencia(nombre, codigoIngresado){
   let ahora=new Date();
   let diferenciaMinutos=(ahora-tiempo)/(1000*60);
   if(codigoIngresado===codigoValido && diferenciaMinutos <=60){
-    MailApp.senemail("ingresaruncorreo", "Asistencia registrada", "Asistió: " + nombre);
+    MailApp.sendEmail("jaimeigreda195@gmail.com", "Asistencia registrada", "Asistió: " + nombre);
     return "Codigo valido, asistencia registrada exitosamente";
   }else{
     return "Codigo invalido o vencido";
